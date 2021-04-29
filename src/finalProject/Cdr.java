@@ -1,17 +1,32 @@
 package finalProject;
 
-public class Cdr implements Actor{
+public class Cdr extends AbstractActor{
 
-	@Override
-	public void ConnectIn(Channel c, int i) {
-		// TODO Auto-generated method stub
-		
+	public Cdr() {
+		super();
+		initialize(1, 1);
 	}
 
 	@Override
-	public void ConnectOut(Channel c, int i) {
-		// TODO Auto-generated method stub
+	public void run() {
+		assert isComplete();
+		try {
+			aInputChannels[0].take();
+			while (true) {
+				int result = aInputChannels[0].take();
+				Fire(result);
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void Fire(int... is) throws InterruptedException {
+		for (int i : is)aOutputChannels[0].put(i);
 		
 	}
+
+
 
 }

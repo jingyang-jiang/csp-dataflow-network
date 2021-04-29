@@ -1,16 +1,34 @@
 package finalProject;
 
-public class Fork implements Actor{
+public class Fork extends AbstractActor{
 
-	@Override
-	public void ConnectIn(Channel c, int i) {
-		// TODO Auto-generated method stub
-		
+	public Fork() {
+		super();
+		initialize(1, 2);
 	}
 
 	@Override
-	public void ConnectOut(Channel c, int i) {
-		// TODO Auto-generated method stub
+	public void run() {
+		assert isComplete();
+		while (true) {
+			try {
+				int x = aInputChannels[0].take();
+				Fire(x);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
+
+
+	@Override
+	public void Fire(int... is) throws InterruptedException {
+		for(int i : is) {
+			aOutputChannels[0].put(i);
+			aOutputChannels[1].put(i);
+		}
 		
 	}
 

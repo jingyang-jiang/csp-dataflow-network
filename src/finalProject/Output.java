@@ -1,17 +1,33 @@
 package finalProject;
 
-public class Output implements Actor{
+public class Output extends AbstractActor{
+
+	public Output() {
+		super(); 
+		initialize(1, 1);
+	}
 
 	@Override
-	public void ConnectIn(Channel c, int i) {
-		// TODO Auto-generated method stub
+	public void run() {
+		assert isComplete();
+		while(true) {
+			try {
+				int x = aInputChannels[0].take();
+				Fire(x);
+			} catch (InterruptedException e) {
+
+				e.printStackTrace();
+			}
+			
+		}
 		
 	}
 
 	@Override
-	public void ConnectOut(Channel c, int i) {
-		// TODO Auto-generated method stub
+	public void Fire(int... is) throws InterruptedException {
+		for(int i : is ) aOutputChannels[0].put(i);
 		
 	}
+
 
 }
