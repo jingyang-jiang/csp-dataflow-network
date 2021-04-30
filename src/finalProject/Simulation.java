@@ -4,18 +4,19 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class Simulation {
 
-    static ExecutorService pool;
+    public static ThreadPoolExecutor pool;
     static final Factory aFactory = new Factory();
-	static boolean end = false;
+	volatile static boolean end = false;
 	public static void main(String[] args)  {
 		
 		int t = Integer.parseInt(args[0]);
 		assert t>=1;
-		pool= Executors.newFixedThreadPool(t);
+		pool= (ThreadPoolExecutor) Executors.newFixedThreadPool(t);
 		long start= System.currentTimeMillis();
 		start();
 		System.out.println(end);

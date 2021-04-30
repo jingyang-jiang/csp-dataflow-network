@@ -1,4 +1,7 @@
 package finalProject;
+
+import java.util.concurrent.TimeUnit;
+
 public class Add extends AbstractActor{
 
 	public Add() {
@@ -9,7 +12,8 @@ public class Add extends AbstractActor{
 	@Override
 	public void run() {
 		assert isComplete();
-		while (true) {
+
+		while (!Simulation.end) {
 			try {
 				int x = aInputChannels[0].take();
 				int y = aInputChannels[1].take();
