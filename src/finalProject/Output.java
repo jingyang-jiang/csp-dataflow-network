@@ -25,7 +25,7 @@ public class Output extends AbstractActor{
 
 	@Override
 	public void Fire(int... is) throws InterruptedException {
-		for(int i : is ) aOutputChannels[0].put(i);
+		for(int i : is ) System.out.println(i);
 		
 	}
 

@@ -3,7 +3,7 @@ package finalProject;
 public class Factory {
 
 	public enum ChannelType {SynchronousChannel,ArrayBlockingChannel}
-	private ChannelType aType = ChannelType.SynchronousChannel;
+	private ChannelType aType = ChannelType.ArrayBlockingChannel;
 	public void setType (ChannelType pType) {
 		aType = pType;
 	}
@@ -43,7 +43,7 @@ public class Factory {
 			throw new IllegalArgumentException("There is no defined actor named: " + name);
 		}
 	}
-	ChannelInterface createChannel () {
+	Channel createChannel () {
 		if (aType.equals(ChannelType.SynchronousChannel)) {
 			return new SynchronousChannel();
 		}else{

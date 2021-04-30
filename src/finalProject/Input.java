@@ -11,10 +11,12 @@ public class Input extends AbstractActor{
 	@Override
 	public void run() {
 		assert isComplete();
+		
 		while(true) {
 			try {
 				int x = aInputChannels[0].take();
 				Fire(x);
+				
 			} catch (InterruptedException e) {
 				
 				e.printStackTrace();

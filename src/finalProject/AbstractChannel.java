@@ -2,7 +2,7 @@ package finalProject;
 
 import java.util.concurrent.BlockingQueue;
 
-public abstract class AbstractChannel implements ChannelInterface {
+public abstract class AbstractChannel implements Channel {
 
 	protected BlockingQueue<Integer> aBlockingQueue;
 	

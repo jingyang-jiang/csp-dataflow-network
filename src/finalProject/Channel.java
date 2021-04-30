@@ -1,8 +1,8 @@
 package finalProject;
 
-public interface ChannelInterface{
+public interface Channel{
 
-	public static ChannelInterface NullChannel = new ChannelInterface () {
+	public static Channel NullChannel = new Channel () {
 		@Override
 		public void set(int i) {return;}
 		@Override
