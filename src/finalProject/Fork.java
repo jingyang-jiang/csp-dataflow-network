@@ -10,7 +10,7 @@ public class Fork extends AbstractActor{
 	@Override
 	public void run() {
 		assert isComplete();
-		while (true) {
+		while (!Simulation.end) {
 			try {
 				int x = aInputChannels[0].take();
 				Fire(x);

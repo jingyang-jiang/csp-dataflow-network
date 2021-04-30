@@ -11,10 +11,21 @@ public interface Channel{
 		public void put(int i) throws InterruptedException {return;}
 		@Override
 		public boolean isNull() {return true;}
+		@Override
+		public Integer poll() {
+			return null;
+		}
+		@Override
+		public Integer peek() {
+			
+			return null;
+		}
 	};
 	
 	void set(int i);
 	int take() throws InterruptedException;
 	void put(int i) throws InterruptedException;
+	Integer poll();
+	Integer peek();
 	default boolean isNull() {return false ;}
 }

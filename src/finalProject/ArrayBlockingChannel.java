@@ -26,6 +26,14 @@ public class ArrayBlockingChannel extends AbstractChannel{
 			e.printStackTrace();
 		}
 	}
+	@Override
+	public Integer poll() {
+		return aBlockingQueue.poll();
+	}
+	@Override
+	public Integer peek() {
+		return aBlockingQueue.peek();
+	}
 
 
 }

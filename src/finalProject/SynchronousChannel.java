@@ -26,5 +26,16 @@ public class SynchronousChannel extends AbstractChannel{
 		
 	}
 
+	@Override
+	public Integer poll() {
+			return aBlockingQueue.poll();
+	}
+
+	@Override
+	public Integer peek() {
+		
+		return aBlockingQueue.peek();
+	}
+
 
 }

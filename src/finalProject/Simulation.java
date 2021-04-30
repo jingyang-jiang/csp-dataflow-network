@@ -12,18 +12,16 @@ public class Simulation {
     public static ThreadPoolExecutor pool;
     static final Factory aFactory = new Factory();
 	volatile static boolean end = false;
-	public static void main(String[] args)  {
+	public static void main(String[] args) throws InterruptedException  {
 		
 		int t = Integer.parseInt(args[0]);
 		assert t>=1;
 		pool= (ThreadPoolExecutor) Executors.newFixedThreadPool(t);
 		long start= System.currentTimeMillis();
 		start();
-		System.out.println(end);
-		while(System.currentTimeMillis()-start<200);
+		TimeUnit.SECONDS.sleep(2);
 		end = true;
-		System.out.println(end);
-		
+		pool.shutdown();
 	}
 	
 	static void start() {

@@ -12,7 +12,7 @@ public class Cdr extends AbstractActor{
 		assert isComplete();
 		try {
 			aInputChannels[0].take();
-			while (true) {
+			while (!Simulation.end) {
 				int result = aInputChannels[0].take();
 				Fire(result);
 			}

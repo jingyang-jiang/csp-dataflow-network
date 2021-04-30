@@ -11,8 +11,9 @@ public class Equals extends AbstractActor{
 	@Override
 	public void run() {
 		assert isComplete();
-		while (true) {
+		while (!Simulation.end) {
 			try {
+
 				int x = aInputChannels[0].take();
 				int y = aInputChannels[1].take();
 				Fire (x,y);
@@ -21,6 +22,7 @@ public class Equals extends AbstractActor{
 				e.printStackTrace();
 			}
 		}
+
 		
 	}
 

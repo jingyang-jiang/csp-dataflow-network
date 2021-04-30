@@ -13,20 +13,18 @@ public class Constant extends AbstractActor{
 	@Override
 	public void run() {
 		assert isComplete();
-		while(true) {
+		while(!Simulation.end) {
 			
 			try {
+				
 				aInputChannels[0].take();
 				Fire();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}
-			
-			
-			
-			
+			}	
 		}
 		
+
 	}
 	
 	@Override
