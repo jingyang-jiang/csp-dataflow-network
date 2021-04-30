@@ -23,9 +23,7 @@ public class Switch extends AbstractActor{
 				int bool = aInputChannels[0].take();
 				// this bool has to be either 0 or 1 
 				assert bool == 0 || bool == 1 ;
-
 				int data = aInputChannels[1].take();
-				System.out.println(data);
 				Fire(bool,data);
 			} catch (InterruptedException e) {
 				e.printStackTrace();

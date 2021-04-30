@@ -12,17 +12,22 @@ public class Simulation {
     public static ThreadPoolExecutor pool;
     static final Factory aFactory = new Factory();
 	volatile static boolean end = false;
+	volatile static long startTime;
+	volatile static long endTime;
 	public static void main(String[] args) throws InterruptedException  {
 		
 		int t = Integer.parseInt(args[0]);
 		assert t>=1;
 		pool= (ThreadPoolExecutor) Executors.newFixedThreadPool(t);
-		long start= System.currentTimeMillis();
+		startTime= System.currentTimeMillis();
 		start();
-		TimeUnit.SECONDS.sleep(2);
-		end = true;
+	
+		while(!end)TimeUnit.MILLISECONDS.sleep(100);
 		pool.shutdown();
+		System.out.print("time taken for "+t+" threads: "+(endTime-startTime)+"ms.");
 	}
+	
+	
 	
 	static void start() {
 		ArrayList<Actor> sim= exampleFor();
@@ -48,9 +53,9 @@ public class Simulation {
 		
 		//this channel acts as input;
 		Channel merge_falseChannel = aFactory.createChannel();
-		merge_falseChannel.set(0);
+		for(int i=0;i<10000;i++)merge_falseChannel.set(0);
 		merge.ConnectIn(merge_falseChannel, 2);
-		
+	
 		Factory.connectActors(aFactory.createChannel(), merge, fork1, 0, 0);
 		Factory.connectActors(aFactory.createChannel(), fork1, constantFork, 1, 0);
 		Factory.connectActors(aFactory.createChannel(), fork1, Switch, 0, 1);

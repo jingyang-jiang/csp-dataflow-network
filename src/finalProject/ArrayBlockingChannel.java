@@ -6,7 +6,7 @@ public class ArrayBlockingChannel extends AbstractChannel{
 
 	
 	
-	private int aCHANNELCAPACITY = 1000;
+	private int aCHANNELCAPACITY = 10000;
 	
 	
 	public ArrayBlockingChannel() {

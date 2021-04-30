@@ -2,11 +2,7 @@ package finalProject;
 
 public class Factory {
 
-	public enum ChannelType {SynchronousChannel,ArrayBlockingChannel}
-	private ChannelType aType = ChannelType.ArrayBlockingChannel;
-	public void setType (ChannelType pType) {
-		aType = pType;
-	}
+
 	Actor createActor (String name) { 
 		switch (name) {
 		case "add": {
@@ -48,10 +44,7 @@ public class Factory {
 		receiver.ConnectIn(pChannel, receiverChannelNum);
 	}
     Channel createChannel() {
-		if (aType.equals(ChannelType.SynchronousChannel)) {
-			return new SynchronousChannel();
-		}else{
-			return new ArrayBlockingChannel();
-		}
+		return new ArrayBlockingChannel();
+		
 	}
 }

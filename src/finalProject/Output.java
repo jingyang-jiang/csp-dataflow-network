@@ -2,6 +2,7 @@ package finalProject;
 
 public class Output extends AbstractActor{
 
+	private int TestCounter = 0;
 	public Output() {
 		super(); 
 		initialize(1, 1);
@@ -32,7 +33,11 @@ public class Output extends AbstractActor{
 
 	@Override
 	public void Fire(int... is) throws InterruptedException {
-		for(int i : is ) System.out.println(i);
+		TestCounter++;
+		if(TestCounter==10000) {
+			Simulation.end=true;
+			Simulation.endTime=System.currentTimeMillis();
+		};
 		
 	}
 
