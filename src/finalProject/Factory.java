@@ -43,7 +43,11 @@ public class Factory {
 			throw new IllegalArgumentException("There is no defined actor named: " + name);
 		}
 	}
-	Channel createChannel () {
+	static void connectActors (Channel pChannel,Actor sender, Actor receiver, int senderChannelNum, int receiverChannelNum) {
+		sender.ConnectOut(pChannel, senderChannelNum);
+		receiver.ConnectIn(pChannel, receiverChannelNum);
+	}
+    Channel createChannel() {
 		if (aType.equals(ChannelType.SynchronousChannel)) {
 			return new SynchronousChannel();
 		}else{
