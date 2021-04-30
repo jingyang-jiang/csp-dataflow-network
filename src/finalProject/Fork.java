@@ -12,6 +12,12 @@ public class Fork extends AbstractActor{
 		assert isComplete();
 		while (!Simulation.end) {
 			try {
+				if(aInputChannels[0].peek()==null) {
+					if(!Simulation.end) {
+						Simulation.pool.getQueue().add(this);
+						break;
+					}else {break;}
+				}
 				int x = aInputChannels[0].take();
 				Fire(x);
 			} catch (InterruptedException e) {
